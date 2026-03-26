@@ -1,8 +1,8 @@
 {
-    "id": "com.stirobot.mobile",
+    "id": "com.stirobot.mobile.v1",
     "name": "StiRobot Mobile Control",
     "short_name": "StiRobot",
-    "description": "Unité de contrôle mobile avancée pour le robot StiRobot. Permet le pilotage en temps réel, le retour vidéo et la télémétrie GPS.",
+    "description": "Unité de contrôle mobile avancée pour le robot StiRobot. Pilotage en temps réel, retour vidéo HD et télémétrie complète.",
     "lang": "fr-FR",
     "dir": "ltr",
     "categories": ["utilities", "productivity"],
@@ -16,13 +16,13 @@
     "icons": [
         {
             "src": "assets/images/logo.png",
-            "sizes": "192x192",
+            "sizes": "1024x1024",
             "type": "image/png",
             "purpose": "any"
         },
         {
             "src": "assets/images/logo.png",
-            "sizes": "512x512",
+            "sizes": "1024x1024",
             "type": "image/png",
             "purpose": "maskable"
         }
@@ -30,10 +30,17 @@
     "screenshots": [
         {
             "src": "assets/images/screenshot1.png",
-            "sizes": "1080x1920",
+            "sizes": "640x640",
             "type": "image/png",
             "form_factor": "narrow",
-            "label": "Écran de pilotage"
+            "label": "Interface de pilotage"
+        },
+        {
+            "src": "assets/images/screenshot1.png",
+            "sizes": "640x640",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Tableau de bord"
         }
     ],
     "shortcuts": [
@@ -42,7 +49,7 @@
             "short_name": "Contrôleur",
             "description": "Accéder directement à l'interface de pilotage",
             "url": "./controller.html",
-            "icons": [{ "src": "assets/images/logo.png", "sizes": "192x192" }]
+            "icons": [{ "src": "assets/images/logo.png", "sizes": "1024x1024" }]
         }
     ]
 }
