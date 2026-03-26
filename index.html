@@ -10,29 +10,41 @@
     <meta name="theme-color" content="#0ea5e9">
 </head>
 
-<body class="menu-page">
+<body>
+    <!-- Écran de Démarrage (Animation) -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="logo-anim">
+            <img src="assets/images/logo.png" alt="Logo">
+            <div class="glow-ring"></div>
+        </div>
+        <p class="loading-text">INITIALISATION DES SYSTÈMES...</p>
+    </div>
+
     <div class="bg-glow"></div>
 
-    <main class="landing-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 2rem; height: 100vh; width: 100vw; overflow: hidden;">
-        
-        <section class="unit-card">
-            <h1 style="font-size: 3.5rem; margin-bottom: 0;">StiRobot</h1>
-            <p style="color: var(--text-dim); font-family: monospace; letter-spacing: 3px; font-size: 0.8rem;">TERRA-EXPLORER V4</p>
+    <main class="landing-container">
+        <header class="logo-container">
+            <h1>StiRobot</h1>
+            <p>MOBILE CONTROL UNIT</p>
+        </header>
+
+        <section class="button-grid">
+            <button class="btn-primary" onclick="window.location.href='controller.html'">
+                <span>🎮</span>
+                <span>Contrôleur Robot</span>
+            </button>
+            <button class="btn-secondary" onclick="window.location.href='./presentation/index.html'">
+                <span>📂</span>
+                <span>Réalisation Projet</span>
+            </button>
         </section>
 
-        <section class="button-grid" style="width: 90%; max-width: 400px; display: flex; flex-direction: column; gap: 1.5rem;">
-            <button class="btn-primary" onclick="location.href='controller.html'" style="width: 100%;">
-                <span>🎮</span> LANCER MISSION
-            </button>
-            
-            <button class="btn-secondary" onclick="location.href='./presentation/index.html'" style="width: 100%;">
-                <span>📂</span> DOSSIER TECHNIQUE
-            </button>
-        </section>
-
-        <div id="status-box" class="glass" style="padding: 0.8rem 1.5rem; border-radius: 50px; pointer-events: none;">
-            <span id="status-text" style="font-family: monospace; font-size: 0.6rem; color: var(--primary); letter-spacing: 2px;">SYSTÈME PRÊT</span>
-        </div>
+        <footer style="margin-top: auto; padding-bottom: 2rem;">
+            <div id="status-box" class="glass status-indicator">
+                <span class="status-dot"></span>
+                <span id="status-text">DISCONNECTÉ</span>
+            </div>
+        </footer>
     </main>
 
     <script src="assets/js/app.js"></script>

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'stirobot-cache-v12';
+const CACHE_NAME = 'stirobot-cache-v6';
 const ASSETS = [
     './',
     './index.html',
