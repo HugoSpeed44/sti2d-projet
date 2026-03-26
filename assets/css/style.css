@@ -61,7 +61,7 @@
     transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.splash-screen.hidden { opacity: 0; pointer-events: none; }
+.splash-screen.hidden { opacity: 0; pointer-events: none; display: none; }
 
 .logo-anim { position: relative; width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; }
 .logo-anim img { width: 100px; height: 100px; object-fit: contain; z-index: 2; animation: scaleIn 0.8s ease-out; }
