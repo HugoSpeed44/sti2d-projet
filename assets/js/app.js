@@ -8,7 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Register Service Worker for PWA
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('service-worker.js')
-            .then(reg => console.log('SW Registered', reg))
+            .then(reg => {
+                console.log('SW Registered', reg);
+                reg.onupdatefound = () => {
+                    const installingWorker = reg.installing;
+                    installingWorker.onstatechange = () => {
+                        if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            // New content available, reload
+                            window.location.reload();
+                        }
+                    };
+                };
+            })
             .catch(err => console.log('SW Error', err));
     }
 

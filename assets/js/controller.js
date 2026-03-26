@@ -25,6 +25,12 @@ const client = mqtt.connect(host, options);
 const statusDot = document.querySelector('.status-dot');
 const statusText = document.getElementById('status-text');
 
+// Gestion de l'écran de démarrage
+setTimeout(() => {
+    const splash = document.getElementById('splash-screen');
+    if (splash) splash.classList.add('hidden');
+}, 2500);
+
 // Tentative de verrouillage de l'orientation en paysage (PWA)
 if (screen.orientation && screen.orientation.lock) {
     screen.orientation.lock('landscape').catch(err => {
