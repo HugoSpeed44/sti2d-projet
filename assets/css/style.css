@@ -24,12 +24,12 @@
     user-select: none;
 }
 
-/* Orientation Warning */
-.orientation-warning {
+/* Orientation Warnings */
+.portrait-warning, .landscape-warning {
     position: fixed;
     inset: 0;
     background: var(--bg-dark);
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -38,13 +38,21 @@
     padding: 20px;
 }
 
+/* On Controller -> Hide if Landscape, Show if Portrait */
+.controller-page .portrait-warning { display: flex; }
 @media (orientation: landscape) {
-    .orientation-warning { display: none; }
+    .controller-page .portrait-warning { display: none; }
 }
 
-.orientation-warning .icon { font-size: 5rem; margin-bottom: 20px; animation: rotate 2s infinite ease-in-out; }
-.orientation-warning p { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: 1px; }
-.orientation-warning span { color: var(--text-dim); margin-top: 10px; }
+/* On Menu (index) -> Hide if Portrait, Show if Landscape */
+.menu-page .landscape-warning { display: flex; }
+@media (orientation: portrait) {
+    .menu-page .landscape-warning { display: none; }
+}
+
+.orientation-warning .icon, .portrait-warning .icon, .landscape-warning .icon { font-size: 5rem; margin-bottom: 20px; animation: rotate 2s infinite ease-in-out; }
+.orientation-warning p, .portrait-warning p, .landscape-warning p { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: 1px; }
+.orientation-warning span, .portrait-warning span, .landscape-warning span { color: var(--text-dim); margin-top: 10px; }
 
 @keyframes rotate { 0% { transform: rotate(0deg); } 50% { transform: rotate(90deg); } 100% { transform: rotate(90deg); } }
 

@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2500);
 
     // Clock Logic
+    if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock('portrait').catch(e => console.log("Lock blocked:", e));
+    }
     function updateClock() {
         const now = new Date();
         const clock = document.getElementById('clock-display');
