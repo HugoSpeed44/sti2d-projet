@@ -1,0 +1,48 @@
+{
+    "id": "com.stirobot.mobile",
+    "name": "StiRobot Mobile Control",
+    "short_name": "StiRobot",
+    "description": "Unité de contrôle mobile avancée pour le robot StiRobot. Permet le pilotage en temps réel, le retour vidéo et la télémétrie GPS.",
+    "lang": "fr-FR",
+    "dir": "ltr",
+    "categories": ["utilities", "productivity"],
+    "start_url": "./index.html",
+    "scope": "./",
+    "display": "standalone",
+    "display_override": ["standalone", "window-controls-overlay"],
+    "background_color": "#020617",
+    "theme_color": "#0ea5e9",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "assets/images/logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "assets/images/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "assets/images/screenshot1.png",
+            "sizes": "1080x1920",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Écran de pilotage"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Ouvrir le Contrôleur",
+            "short_name": "Contrôleur",
+            "description": "Accéder directement à l'interface de pilotage",
+            "url": "./controller.html",
+            "icons": [{ "src": "assets/images/logo.png", "sizes": "192x192" }]
+        }
+    ]
+}

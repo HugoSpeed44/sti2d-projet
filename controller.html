@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape, orientation=portrait">
+    <title>StiRobot - Contrôleur</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+</head>
+<body class="controller-layout">
+    
+    <!-- Zone Vidéo / Télémétrie -->
+    <header class="video-view">
+        <iframe src="https://vdo.ninja/?view=StirobotCam&autoplay=1&buffer=0" allow="autoplay; camera; microphone; fullscreen"></iframe>
+        
+        <div class="telemetry-overlay">
+            <div class="glass stat-chip">
+                <span>⚡ </span><span id="vitesse">0 km/h</span>
+            </div>
+            <div class="glass stat-chip">
+                <span>🌡️ </span><span id="temp">--</span>°C
+            </div>
+            <div class="glass stat-chip">
+                <span>🛰️ </span><span id="sats">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Zone Contrôles -->
+    <main class="controls-area">
+        
+        <div class="control-group">
+            <!-- D-PAD MOTEURS -->
+            <div class="d-pad">
+                <div></div>
+                <button class="glass dir-btn" id="btn-z" data-key="z">▲</button>
+                <div></div>
+                <button class="glass dir-btn" id="btn-q" data-key="q">◀</button>
+                <button class="glass dir-btn" id="btn-s" data-key="s">▼</button>
+                <button class="glass dir-btn" id="btn-d" data-key="d">▶</button>
+            </div>
+
+            <!-- ACTIONS CENTRALES -->
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <button class="glass btn-secondary" id="btn-lumiere" style="padding: 10px 20px;">💡 LUMIÈRE</button>
+                <button class="glass btn-secondary" id="btn-demarrage" style="padding: 10px 20px;">🔌 DÉMARRAGE</button>
+                <button class="glass btn-secondary" onclick="window.location.href='index.html'" style="padding: 10px 20px;">🏡 RETOUR</button>
+            </div>
+
+            <!-- D-PAD CAMERA (SERVOS) -->
+            <div class="d-pad">
+                <div></div>
+                <button class="glass dir-btn" data-key="ArrowUp">▲</button>
+                <div></div>
+                <button class="glass dir-btn" data-key="ArrowLeft">◀</button>
+                <button class="glass dir-btn" data-key="ArrowDown">▼</button>
+                <button class="glass dir-btn" data-key="ArrowRight">▶</button>
+            </div>
+        </div>
+
+    </main>
+
+    <footer style="padding: 10px; display: flex; justify-content: center;">
+        <div id="conn-status" class="glass status-indicator" style="width: auto;">
+            <span class="status-dot"></span>
+            <span id="status-text">CONNEXION...</span>
+        </div>
+    </footer>
+
+    <script src="assets/js/controller.js"></script>
+</body>
+</html>
