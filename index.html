@@ -23,26 +23,44 @@
     <div class="bg-glow"></div>
 
     <main class="landing-container">
-        <header class="logo-container">
-            <h1>StiRobot</h1>
-            <p>MOBILE CONTROL UNIT</p>
-        </header>
+        <!-- Top Bar Dashboard -->
+        <div class="top-bar">
+            <div class="system-status">
+                <div class="pulse-dot"></div>
+                <span>SYSTEM: NOMINAL</span>
+            </div>
+            <div class="system-status">
+                <span id="clock-display">22:05:12</span>
+            </div>
+        </div>
 
+        <!-- Central Robot Unit -->
+        <section class="unit-card">
+            <div class="robot-preview">
+                <div class="icon">🤖</div>
+                <div class="glow-ring"></div>
+            </div>
+            <h1>StiRobot</h1>
+            <div class="model-id">UNIT-04 // TERRA-EXPLORER</div>
+        </section>
+
+        <!-- Action Grid -->
         <section class="button-grid">
             <button class="btn-primary" onclick="window.location.href='controller.html'">
                 <span>🎮</span>
-                <span>Contrôleur Robot</span>
+                <span>Lancer Pilotage</span>
             </button>
             <button class="btn-secondary" onclick="window.location.href='./presentation/index.html'">
                 <span>📂</span>
-                <span>Réalisation Projet</span>
+                <span>Dossier Technique</span>
             </button>
         </section>
 
-        <footer style="margin-top: auto; padding-bottom: 2rem;">
-            <div id="status-box" class="glass status-indicator">
+        <!-- Footer Info -->
+        <footer style="margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
+            <div id="status-box" class="glass status-indicator" style="justify-content: center; width: 100%;">
                 <span class="status-dot"></span>
-                <span id="status-text">DISCONNECTÉ</span>
+                <span id="status-text" style="font-size: 0.7rem; letter-spacing: 2px;">VÉRIFICATION CONNEXION...</span>
             </div>
         </footer>
     </main>

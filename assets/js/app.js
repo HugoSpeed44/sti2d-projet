@@ -7,6 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (splash) splash.classList.add('hidden');
     }, 2500);
 
+    // Clock Logic
+    function updateClock() {
+        const now = new Date();
+        const clock = document.getElementById('clock-display');
+        if (clock) clock.innerText = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
     // Check connection with broker for status indicator
     const host = 'wss://sti-robot.cloud.shiftr.io';
     const statusDot = document.querySelector('.status-dot');

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terra-Explorer - Dossier Technique STI2D</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+<body>
+
+<!-- Canvas Fond Animé & Grille Tech -->
+<canvas id="bgCanvas"></canvas>
+<div class="bg-grid"></div>
+
+<!-- Floating Navigation Pill -->
+<div class="nav-container">
+    <header>
+        <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <img src="images/logo.png" alt="Logo">
+            <h1>Hugo.F</h1>
+        </div>
+        <nav>
+            <a data-target="intro">Présentation</a>
+            <a data-target="materiel">Matériel</a>
+            <a data-target="methodes">Méthodes</a>
+            <a data-target="resultats">Résultats</a>
+            <a data-target="annexes">Média</a>
+        </nav>
+    </header>
+</div>
+
+<!-- Hero Section -->
+<section class="hero" id="hero">
+    <div class="badge">Dossier Technique • Projet Terminale STI2D</div>
+    <h1>Terra-Explorer<br><span>Téléprésence & Nature</span></h1>
+    <p>Conception et documentation technique d'une solution robotisée d'exploration à distance, conçue pour reconnecter les personnes à mobilité réduite avec les environnements naturels hostiles.</p>
+    <a href="#" data-target="intro" class="cta-btn">Lire le rapport technique</a>
+</section>
+
+<!-- Introduction -->
+<section id="intro">
+    <div class="section-header">
+        <span class="section-subtitle">01 . Contexte du projet</span>
+        <h2>Présentation</h2>
+        <p class="section-desc">Pourquoi avons-nous développé cette solution et quel problème visons-nous à résoudre ?</p>
+    </div>
+    
+    <div class="content-grid">
+        <div class="text-block">
+            <p>
+                L'isolement et la sédentarité touchent de nombreuses personnes âgées, qui ne peuvent plus se déplacer facilement dans des environnements naturels tels que les forêts, les sentiers de randonnée ou les zones escarpées. Pourtant, garder un lien avec la nature est super important pour le moral et le bien-être.
+			</p>
+            <p>
+                L'objectif absolu de notre prototype est d'offrir une solution de <em>téléprésence immersive</em>. Concrètement, le robot <strong>Terra-Explorer</strong> devient « les jambes et les yeux » de l'utilisateur final. Propulsé par un système robuste à chenilles, il est conçu pour franchir des obstacles d'arrière-pays (cailloux, racines) là où des roues standards échoueraient. La captation vidéo en direct est ensuite transmise en temps réel à l'utilisateur resté chez lui.
+            </p>
+        </div>
+        <img src="images/image1.jpg" alt="Aperçu nature" class="image-showcase">
+    </div>
+</section>
+
+<!-- Matériel (Rebuilt as requested) -->
+<section id="materiel">
+    <div class="section-header">
+        <span class="section-subtitle">02 . Composants</span>
+        <h2>Matériel</h2>
+        <p class="section-desc">Ce dont nous avons eu besoin pour construire notre robot et les critères de sélection.</p>
+    </div>
+    
+    <div class="content-grid" style="align-items: start;">
+        <div class="text-block" style="gap: 15px;">
+            <p>Nous avons dû tout d’abord choisir le matériel dont nous allions avoir besoin. Les critères les plus importants pour choisir ce matériel sont qu’ils soient compatibles avec la carte Arduino UNO R4 wifi.</p>
+            <p>Le premier élément qui est le plus important est la carte <strong>Arduino UNO R4 wifi</strong> qui va nous permettre de mettre le programme dedans pour qu’il soit exécuté, et le wifi dont la carte est équipée nous permettra de lui donner des ordres à distance.</p>
+            <p>Nous avons aussi besoin d’une <strong>batterie</strong> qui sert à faire fonctionner tous les autres composants, ainsi que de <strong>bases</strong> qui vont nous servir de multiprise pour alimenter les composants.</p>
+            <p>Puis il a fallu choisir <strong>2 moteurs</strong> qui sont assez puissants pour faire avancer le robot, mais qui ne consomment pas trop de courant pour ne pas vider la batterie trop vite, et pour pouvoir rajouter d’autres composants.</p>
+            <p>Après, il a fallu trouver une <strong>carte 4 relais</strong> pour pouvoir brancher les moteurs en pont en H, ce qui nous permettra par la suite de faire tourner nos moteurs dans un sens ou dans l’autre sens.</p>
+            <p>Il nous faut aussi <strong>2 servomoteurs</strong> pour pouvoir contrôler l’inclinaison et la rotation du support à téléphone, pour eux il faut les choisir en fonction de la puissance qu’on a besoin pour faire bouger le support à téléphone et de l’angle sur lequel on veut qu’il puisse se déplacer.</p>
+            <p>Nous allons aussi nous servir de <strong>bandes LED</strong> qui vont nous servir de phare ainsi que de clignotant pour notre robot, pour cela il va falloir choisir le nombre de LED qu’on veut sur notre bande ainsi que la longueur qu’on veut.</p>
+            <p>Il nous faut aussi plusieurs <strong>capteurs</strong> qu’on choisit en fonction des informations que nous voulons recevoir :
+                <br><br>• Nous avons choisi de pouvoir voir la température qu’il fait où notre robot est présent, donc on a choisi un <strong>capteur de température</strong>.
+                <br>• Puis on voulait pouvoir situer notre robot dans l’espace donc nous l’avons équipé d’un <strong>GPS</strong>.
+                <br>• Nous l’avons aussi équipé d’un <strong>capteur de luminosité</strong> qui nous permet d’actionner automatiquement les phares quand il fait trop sombre.
+                <br>• Puis nous l’avons équipé d’un <strong>capteur ultrasons</strong> pour qu’on puisse savoir à quelle distance l’obstacle se situe et qu’on puisse arrêter les moteurs avant la collision.
+            </p>
+        </div>
+        <div style="position: sticky; top: 120px;">
+            <img src="images/matériel.png" alt="Hardware" class="image-showcase" style="width: 100%; height: auto; object-fit: contain; padding: 20px; background: rgba(255,255,255,0.02); min-height: 200px;">
+        </div>
+    </div>
+</section>
+
+<!-- Méthodes (Processus) -->
+<section id="methodes">
+    <div class="section-header">
+        <span class="section-subtitle">03 . Développement</span>
+        <h2>Méthodes</h2>
+    </div>
+    
+    <div class="content-grid" style="direction: rtl;">
+        <div class="text-block" style="direction: ltr;">
+            <p>
+                L'approche appliquée pour notre code s'inspire du développement logiciel classique : programmation des différents capteurs et actionneurs un par un, avant de tout réunir pour assembler le programme complet de la carte Arduino. Des tests physiques nous ont permis de trouver et régler les bugs.
+            </p>
+            <p>     
+                Pour faciliter le contrôle du robot, nous avons conçu un <strong>Site Web (Interface Utilisateur)</strong>. Il utilise du HTML pour la structure, du CSS pour donner un joli design, et du <em>JavaScript</em> pour envoyer directement les commandes aux moteurs (comme avancer ou reculer) avec un simple clic. Ce système permet à n'importe qui d'utiliser le robot facilement, sans connaissances techniques.
+            </p>
+        </div>
+        <img src="images/code.png" alt="Extrait de code IDE" class="image-showcase" style="direction: ltr;">
+    </div>
+</section>
+
+<!-- Résultats -->
+<section id="resultats">
+    <div class="section-header">
+        <span class="section-subtitle">04 . Phases de test</span>
+        <h2>Résultats</h2>
+        <p class="section-desc">Ce que nous avons observé lors de nos tests en conditions réelles.</p>
+    </div>
+
+    <!-- Metrics Grid -->
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <h4>Valide</h4>
+            <p>Mobilité & Vidéo</p>
+        </div>
+        <div class="metric-card" style="border-top-color: #ef4444;">
+            <h4>Instable</h4>
+            <p>Température</p>
+        </div>
+        <div class="metric-card" style="border-top-color: #eab308;">
+            <h4>Limité</h4>
+            <p>Acquisition GPS</p>
+        </div>
+    </div>
+
+    <div class="bento-grid" style="grid-template-columns: 1fr 1fr; margin-top: 40px; grid-auto-rows: auto;">
+        <div class="bento-item">
+            <h3>Identification des Limites</h3>
+            <p>Nous avons découvert plusieurs instabilités. Les moteurs consomment beaucoup de courant, ce qui crée des baisses de tension sur la carte mère. À cause de cela, les lectures du capteur de température sont complètement faussées. Le GPS, de son côté, met beaucoup de temps à s'allumer s'il est resté éteint longtemps, et il ne fonctionne pas à travers les bâtiments ou les toits.</p>
+        </div>
+        <div class="bento-item">
+            <h3>Perspectives d'Amélioration</h3>
+            <p>Pour l'améliorer, il faudrait séparer l'alimentation des capteurs de celle des moteurs pour éviter les chutes de tension. Pour le protéger, il faudrait une coque étanche contre la terre et l'eau (norme IP67). Enfin, il serait beaucoup plus pratique que le robot se connecte tout seul en wifi dès qu'on le lance, plutôt que de tout paramétrer à la main à chaque fois.</p>
+        </div>
+    </div>
+</section>
+
+<section id="conclusion">
+    <div class="section-header">
+        <span class="section-subtitle">05 . Synthèse</span>
+        <h2>Conclusion du Projet</h2>
+    </div>
+    
+    <div class="content-grid">
+        <div class="text-block">
+            <p>
+                La réalisation du projet valide notre idée de départ. Le robot parvient à se déplacer, à filmer et à nous envoyer les données à distance. Le concept de "téléprésence" fonctionne et est tout à fait réalisable à l'échelle d'un prototype.
+            </p>
+            <p>
+                Cependant, la technique nous a appris qu'assembler des pièces et du code ne suffit pas toujours : il faut que l'ensemble soit stable. Notre problème de capteur de température déréglé par les moteurs le prouve. Mais c'est justement ce travail de recherche et de résolution de problèmes qui rend ce projet de terminale STI2D très instructif et passionnant.
+            </p>
+        </div>
+        <img src="images/image6.jpg" alt="Aperçu du prototype finalisé" class="image-showcase">
+    </div>
+</section>
+
+<!-- Annexes / Media -->
+<section id="annexes">
+    <div class="section-header">
+        <span class="section-subtitle">06 . Visuels</span>
+        <h2>Média & Démonstrations</h2>
+    </div>
+    
+    <div class="media-grid">
+        <div class="media-card">
+            <img src="images/Chaïma montage Projet STI .png" data-src="images/Chaïma montage Projet STI .png" alt="Montage système complet">
+        </div>
+        <div class="media-card">
+            <img src="images/image2.jpg" data-src="images/image2.jpg" alt="Essai tout terrain">
+        </div>
+        <div class="media-card">
+            <img src="images/image4.jpg" data-src="images/image4.jpg" alt="Perspective robot">
+        </div>
+        <div class="media-card">
+            <video controls poster="images/image1.jpg">
+                <source src="videos/video1.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="media-card">
+            <video controls poster="images/image5.jpg">
+                <source src="videos/video2.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</section>
+
+<!-- MODAL POUR L'AGRANDISSEMENT -->
+<div class="modal-overlay" id="imageModal">
+    <button class="modal-close" id="closeModal">&times;</button>
+    <div class="modal-content">
+        <img id="modalImage" src="" alt="Image agrandie hd">
+    </div>
+</div>
+
+<footer class="tech-footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="footer-logo-brand">
+                <img src="images/logo.png" alt="Hugo.F Tech Logo">
+                <h3>Hugo.F</h3>
+            </div>
+            <p>Innovation et conception robotique.<br>Développement du Terra-Explorer pour repousser les limites de la mobilité assistée.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Projet Explorer</h4>
+            <a onclick="scrollToElement('intro')">Présentation</a>
+            <a onclick="scrollToElement('materiel')">Matériel</a>
+            <a onclick="scrollToElement('methodes')">Méthodes</a>
+            <a onclick="scrollToElement('resultats')">Résultats</a>
+        </div>
+        <div class="footer-col">
+            <h4>Ressources</h4>
+            <a href="https://sti-flux.free.nf" target="_blank">Poste de Pilotage LIVE</a>
+            <a onclick="scrollToElement('annexes')">Galerie Vidéo</a>
+        </div>
+        <div class="footer-col">
+            <h4>Hugo.F</h4>
+            <a>Hugo Fouché (SIN)</a>
+            <a>Groupe 1 TSTI2D</a>
+            <a>Lycée Camille Claudel</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-legal">
+            &copy; 2026 Hugo.F - Tous droits réservés.
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
