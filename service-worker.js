@@ -1,4 +1,4 @@
-const CACHE_NAME = 'stirobot-cache-v4';
+const CACHE_NAME = 'stirobot-cache-v6';
 const ASSETS = [
     './',
     './index.html',
@@ -9,6 +9,7 @@ const ASSETS = [
     './assets/images/logo.png',
     './assets/images/screenshot1.png',
     './manifest.json',
+    './presentation/index.html',
     'https://unpkg.com/mqtt/dist/mqtt.min.js'
 ];
 
