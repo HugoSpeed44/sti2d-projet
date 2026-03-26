@@ -12,7 +12,7 @@
     "display_override": ["standalone", "window-controls-overlay"],
     "background_color": "#020617",
     "theme_color": "#0ea5e9",
-    "orientation": "any",
+    "orientation": "landscape",
     "icons": [
         {
             "src": "assets/images/logo.png",

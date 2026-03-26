@@ -125,90 +125,143 @@ body {
     gap: 1.5rem;
 }
 
-/* Controller Specific */
+/* Controller Specific - Landscape First */
 .controller-layout {
+    overflow: hidden;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.landscape-container {
     display: grid;
-    grid-template-rows: auto 1fr auto;
-    height: 100%;
-}
-
-.video-view {
-    position: relative;
+    grid-template-columns: 220px 1fr 220px;
+    grid-template-rows: 1fr auto;
+    height: 100vh;
+    width: 100vw;
     background: #000;
-    height: 40vh;
-    border-bottom: 2px solid var(--primary);
 }
 
-.video-view iframe {
+/* Side Panels */
+.control-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(5px);
+    z-index: 10;
+}
+
+.left-side { border-right: 1px solid hsla(199, 89%, 48%, 0.3); }
+.right-side { border-left: 1px solid hsla(199, 89%, 48%, 0.3); }
+
+/* Center Zone */
+.video-center {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #000;
+}
+
+.video-wrapper {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
     width: 100%;
     height: 100%;
     border: none;
+    object-fit: cover;
 }
 
+/* Overlay Elements */
 .telemetry-overlay {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
+    top: 15px;
+    left: 15px;
+    right: 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 15px;
+    pointer-events: none;
 }
 
 .stat-chip {
-    padding: 4px 10px;
-    font-size: 0.75rem;
-    font-family: monospace;
-    font-weight: bold;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    color: var(--primary);
+    border: 1px solid var(--primary-glow);
 }
 
-.controls-area {
-    padding: 1rem;
+.bottom-bar {
+    height: 60px;
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
     justify-content: center;
-}
-
-.control-group {
-    display: flex;
-    justify-content: space-around;
     align-items: center;
+    padding: 0 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
 }
 
+/* Controls */
 .d-pad {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 8px;
 }
 
 .dir-btn {
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    color: var(--primary);
+    border: 1.5px solid var(--primary-glow);
+    background: hsla(199, 89%, 48%, 0.05);
 }
 
-.dir-btn.active {
+.dir-btn:active, .dir-btn.active {
     background: var(--primary);
-    box-shadow: 0 0 15px var(--primary);
+    color: white;
+    box-shadow: 0 0 25px var(--primary-glow);
+    transform: scale(0.92);
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+.side-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.side-actions .btn-secondary {
+    padding: 12px;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* Responsive adjustments for narrow landscape */
+@media (max-height: 400px) {
+    .dir-btn { width: 55px; height: 55px; font-size: 1.4rem; }
+    .stat-chip { padding: 4px 8px; font-size: 0.7rem; }
+    .landscape-container { grid-template-columns: 180px 1fr 180px; }
 }
 
 .status-indicator {
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    padding: 6px 15px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    border: 1px solid var(--primary-glow);
 }
 
 .status-dot {

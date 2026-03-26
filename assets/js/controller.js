@@ -25,6 +25,13 @@ const client = mqtt.connect(host, options);
 const statusDot = document.querySelector('.status-dot');
 const statusText = document.getElementById('status-text');
 
+// Tentative de verrouillage de l'orientation en paysage (PWA)
+if (screen.orientation && screen.orientation.lock) {
+    screen.orientation.lock('landscape').catch(err => {
+        console.log("Le verrouillage d'orientation n'est pas supporté ou nécessite le plein écran", err);
+    });
+}
+
 // --- CONNECTION EVENTS ---
 client.on('connect', () => {
     console.log("Connecté au broker !");
@@ -130,18 +137,20 @@ document.querySelectorAll('.dir-btn').forEach(btn => {
 });
 
 // Toggle Buttons
-document.getElementById('btn-lumiere').addEventListener('click', () => {
+document.getElementById('btn-lumiere').addEventListener('click', function() {
     etats.lumiere = !etats.lumiere;
     const msg = etats.lumiere ? "on" : "off";
     client.publish(TOPICS.lumiere, msg);
-    document.getElementById('btn-lumiere').innerText = `💡 LUMIÈRE : ${etats.lumiere ? 'ON' : 'OFF'}`;
+    this.classList.toggle('active', etats.lumiere);
+    this.innerText = etats.lumiere ? "💡 LUMIÈRE: ON" : "💡 LUMIÈRE: OFF";
 });
 
-document.getElementById('btn-demarrage').addEventListener('click', () => {
+document.getElementById('btn-demarrage').addEventListener('click', function() {
     etats.demarrage = !etats.demarrage;
     const msg = etats.demarrage ? "1" : "0";
     client.publish(TOPICS.demarrage, msg);
-    document.getElementById('btn-demarrage').innerText = `🔌 DÉMARRAGE : ${etats.demarrage ? 'ON' : 'OFF'}`;
+    this.classList.toggle('active', etats.demarrage);
+    this.innerText = etats.demarrage ? "🔌 CONNECTÉ" : "🔌 DÉMARRÉ";
 });
 
 // Keyboard Support

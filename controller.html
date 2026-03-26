@@ -10,28 +10,11 @@
 </head>
 <body class="controller-layout">
     
-    <!-- Zone Vidéo / Télémétrie -->
-    <header class="video-view">
-        <iframe src="https://vdo.ninja/?view=StirobotCam&autoplay=1&buffer=0" allow="autoplay; camera; microphone; fullscreen"></iframe>
+    <!-- Layout Paysage -->
+    <div class="landscape-container">
         
-        <div class="telemetry-overlay">
-            <div class="glass stat-chip">
-                <span>⚡ </span><span id="vitesse">0 km/h</span>
-            </div>
-            <div class="glass stat-chip">
-                <span>🌡️ </span><span id="temp">--</span>°C
-            </div>
-            <div class="glass stat-chip">
-                <span>🛰️ </span><span id="sats">0</span>
-            </div>
-        </div>
-    </header>
-
-    <!-- Zone Contrôles -->
-    <main class="controls-area">
-        
-        <div class="control-group">
-            <!-- D-PAD MOTEURS -->
+        <!-- Zone Gauche : Moteurs -->
+        <aside class="control-side left-side">
             <div class="d-pad">
                 <div></div>
                 <button class="glass dir-btn" id="btn-z" data-key="z">▲</button>
@@ -40,15 +23,31 @@
                 <button class="glass dir-btn" id="btn-s" data-key="s">▼</button>
                 <button class="glass dir-btn" id="btn-d" data-key="d">▶</button>
             </div>
-
-            <!-- ACTIONS CENTRALES -->
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-                <button class="glass btn-secondary" id="btn-lumiere" style="padding: 10px 20px;">💡 LUMIÈRE</button>
-                <button class="glass btn-secondary" id="btn-demarrage" style="padding: 10px 20px;">🔌 DÉMARRAGE</button>
-                <button class="glass btn-secondary" onclick="window.location.href='index.html'" style="padding: 10px 20px;">🏡 RETOUR</button>
+            <div class="side-actions">
+                <button class="glass btn-secondary" id="btn-demarrage">🔌 DÉMARRAGE</button>
             </div>
+        </aside>
 
-            <!-- D-PAD CAMERA (SERVOS) -->
+        <!-- Zone Centrale : Vidéo + Télémétrie -->
+        <main class="video-center">
+            <div class="video-wrapper">
+                <iframe src="https://vdo.ninja/?view=StirobotCam&autoplay=1&buffer=0" allow="autoplay; camera; microphone; fullscreen"></iframe>
+                <div class="telemetry-overlay">
+                    <div class="glass stat-chip">⚡ <span id="vitesse">0 km/h</span></div>
+                    <div class="glass stat-chip">🌡️ <span id="temp">--</span>°C</div>
+                    <div class="glass stat-chip">🛰️ <span id="sats">0</span></div>
+                </div>
+            </div>
+            <footer class="bottom-bar">
+                <div id="conn-status" class="glass status-indicator">
+                    <span class="status-dot"></span>
+                    <span id="status-text">CONNECTÉ</span>
+                </div>
+            </footer>
+        </main>
+
+        <!-- Zone Droite : Caméra (Servos) -->
+        <aside class="control-side right-side">
             <div class="d-pad">
                 <div></div>
                 <button class="glass dir-btn" data-key="ArrowUp">▲</button>
@@ -57,16 +56,13 @@
                 <button class="glass dir-btn" data-key="ArrowDown">▼</button>
                 <button class="glass dir-btn" data-key="ArrowRight">▶</button>
             </div>
-        </div>
+            <div class="side-actions">
+                <button class="glass btn-secondary" id="btn-lumiere">💡 LUMIÈRE</button>
+                <button class="glass btn-secondary" onclick="window.location.href='index.html'">🏡 RETOUR</button>
+            </div>
+        </aside>
 
-    </main>
-
-    <footer style="padding: 10px; display: flex; justify-content: center;">
-        <div id="conn-status" class="glass status-indicator" style="width: auto;">
-            <span class="status-dot"></span>
-            <span id="status-text">CONNEXION...</span>
-        </div>
-    </footer>
+    </div>
 
     <script src="assets/js/controller.js"></script>
 </body>
