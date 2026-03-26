@@ -1,5 +1,12 @@
 // Main App logic
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Gestion de l'écran de démarrage
+    setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        if (splash) splash.classList.add('hidden');
+    }, 2500);
+
     // Check connection with broker for status indicator
     const host = 'wss://sti-robot.cloud.shiftr.io';
     const statusDot = document.querySelector('.status-dot');

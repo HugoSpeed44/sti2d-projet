@@ -38,6 +38,11 @@ if (screen.orientation && screen.orientation.lock) {
     });
 }
 
+// Vérification manuelle de l'orientation en JS (en plus du CSS)
+window.addEventListener("orientationchange", function() {
+    console.log("Orientation changée : " + screen.orientation.type);
+});
+
 // --- CONNECTION EVENTS ---
 client.on('connect', () => {
     console.log("Connecté au broker !");
